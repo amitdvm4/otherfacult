@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>demonstrating logical and storage sessions</title> 
+	<script type="text/javascript" src="jquery.js"></script>
+	<style type="text/css">
+		.block{
+			border:2px;
+			margin:20px;
+			padding:20px;
+		
+			background:grey;
+		}
+		.wlmbck{
+			border:2px;
+			text-align:center;
+			width:120px;
+			text-decoration:underline;
+			border-radius:20%;
+			position:absolute;
+			display:none;
+			background: green;
+		}
+		.themeBlock{
+			text-align:center;
+		}
+		
+	</style>
+</head>
+<body>
+	<div class="themeBlock">
+		select theme:
+		<select onchange="themeChanged()" id="themeChooser">
+			<option value="red">RED</option>
+			<option value="pink">PINK</option>
+			<option value="blue">BLUE</option>
+			<option value="grey">GREY</option>
+		</select>
+	</div>
+	<div class="block">
+		enter ypour name
+		<input type="text"id="uname">
+		<input type="button" value="save" onclick="savedetails()">
+	</div>
+	<div class="wlmbck">
+		welcome to our page mr.<span></span>
+	</div>
+
+	<script type="text/javascript">
+         /*var data={
+			name:'raj',
+			age:20,
+			gender:'male'
+		}
+		localStorage.setItem("user_data",data);
+		alert(localStorage.getItem("user_data"));*/
+		if(sessionStorage.getItem("user_given_name")!=null){
+			showwlmbck(sessionStorage.getItem("user_given_name"));
+		}
+		if(sessionStorage.getItem("user_given_theme")!=null){
+			applyTheme(sessionStorage.getItem("user_given_theme"));
+		}
+		
+		function savedetails(){
+		var uname=$("#uname").val();
+		sessionStorage.setItem("user_given_name",uname);
+		showwlmbck(uname);
+	}
+	function showwlmbck(uname){
+		$("span").text(uname);
+		$(".wlmbck").show();
+		$(".wlmbck").animate({
+			left:'20%',
+			padding:'35px',
+			width:'300px'
+		},3000);
+	}
+	function themeChanged(){
+		var themeName=$("#themeChooser").val();
+		sessionStorage.setItem("user_given_theme",themeName);
+		applyTheme(themeName);
+
+	}
+	function applyTheme(themeName){
+		$("body").css("background",themeName);
+	}
+
+		
+	</script>
+
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>demonstaringinputelements</title>
+	<script type="text/javascript" src="jquery.js"></script>
+	<style>
+	.block{
+	border:2px;
+	padding:15px;
+
+}
+</style>
+</head>
+<body>
+	<div class="block">
+	
+	nameof the user
+	<input type="text" id="uname">
+	
+
+</div>
+<div>age
+	<input type="number" id="uage">
+
+</div>
+<div>fav color
+	<input type="color">
+</div>
+<div>price of the product
+	<input type="range" min=1000 max=5000>
+</div>
+<div>join date
+	<input type="date">
+	</div>
+	<div>joining  time
+		<input type="datetime-local">
+	</div>
+<div>
+	<input type ="button" value="aply" onclick="showdetails()">
+</div>
+<script type="text/javascript">
+	function showdetails(){
+	var name=document.querySelector("#uname").value;
+	console.log(name);
+		}
+	
+</script>
+</body>
+</html>
